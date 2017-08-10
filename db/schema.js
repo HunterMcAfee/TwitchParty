@@ -20,6 +20,7 @@ const userSchema = Schema({
     userName: String,
     firstName: String,
     lastName: String,
+    email: String,
     bio: String,
     savedParties: []
 });
