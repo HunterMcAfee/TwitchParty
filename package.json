@@ -5,8 +5,14 @@
   "repository": "https://github.com/HunterMcAfee/TwitchParty.git",
   "author": "HunterMcAfee <huntmac10@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"nodemon server.js\" \"cd client && yarn start\""
+  },
   "dependencies": {
     "body-parser": "^1.17.2",
+    "concurrently": "^3.5.0",
     "dotenv": "^4.0.0",
     "express": "^4.15.4",
     "mongoose": "^4.11.6"
