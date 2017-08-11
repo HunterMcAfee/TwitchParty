@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
+import styled from 'styled-components'
 import axios from 'axios';
+
+const PartyStyle = styled.div`
+    img {
+        height: 200px;
+        width: 500px;
+    }
+`;
 
 class Parties extends Component {
     constructor() {
@@ -21,7 +29,16 @@ class Parties extends Component {
         return (
             <div>
                 <h1>Parties</h1>
-
+                <div>
+                {this.state.parties.map( (party, i) => {
+                    return (
+                        <PartyStyle key={i}>
+                        {party.partyName}
+                        <img src={party.bannerImage} />
+                        </PartyStyle>
+                    )
+                })}
+                </div>
             </div>
         );
     }

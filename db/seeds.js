@@ -78,7 +78,7 @@ const streamer8 = new Streamer({
 
 const party2 = new Party({ 
     partyName: 'CounterStrikers',
-    bannerImage: 'https://www.pexels.com/photo/automatic-weapon-bullet-camouflage-close-up-78783/',
+    bannerImage: 'https://static.pexels.com/photos/78783/submachine-gun-rifle-automatic-weapon-weapon-78783.jpeg',
     description: 'Here to become the best that no one ever was.',
     games: ['Counter-Strike: Global Offensive'],
     streamers: [streamer5, streamer6, streamer7, streamer8]
