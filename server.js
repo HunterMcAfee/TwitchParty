@@ -22,6 +22,7 @@ app.use(bodyParser.json());
 
 app.use('/api/party', PartyController);
 app.get('/', (req,res) => {
+    console.log("Hello")
     res.sendFile(__dirname + '/client/build/index.html')
   })
 
