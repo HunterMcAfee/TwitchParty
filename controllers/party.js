@@ -1,6 +1,6 @@
 const express = require('express');
 const Party = require('../models/party');
-const Streamer = require('../models/Streamer');
+const Streamer = require('../models/streamer');
 const router = express.Router();
 
 router.get('/', (req, res) => {
