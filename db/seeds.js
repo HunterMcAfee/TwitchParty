@@ -1,6 +1,6 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-mongoose.connection(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI);
 
 const Streamer = require('../models/streamer');
 const Party = require('../models/party');
@@ -84,7 +84,7 @@ const party2 = new Party({
     streamers: [streamer5, streamer6, streamer7, streamer8]
 });
 
-const User1 = new User({
+const user1 = new User({
     userName: 'JeffJaws',
     firstName: 'Jeffrey',
     lastName: 'Dawson',
@@ -93,7 +93,7 @@ const User1 = new User({
     savedParties: []
 });
 
-const User2 = new User({
+const user2 = new User({
     userName: 'Mauderator',
     firstName: 'Maude',
     lastName: 'Redner',
@@ -102,13 +102,35 @@ const User2 = new User({
     savedParties: []
 });
 
-const User3 = new User({
+const user3 = new User({
     userName: 'TooEaseyCheesey',
     firstName: 'Richard',
     lastName: 'Cheese',
     email: 'EaseyCheese@gmail.com',
     bio: 'I am here to bring the cheese.',
     savedParties: []
+});
+
+party1.save().then( () => {
+    console.log('Party 1 Saved!')
+}).catch( (err) => {
+    console.log(err);
+})
+
+party2.save().then( () => {
+    console.log('Party 2 Saved!')
+});
+
+user1.save().then( () => {
+    console.log('User 1 Saved!')
+});
+
+user2.save().then( () => {
+    console.log('User 2 Saved!')
+});
+
+user3.save().then( () => {
+    console.log('User 3 Saved!')
 });
 
 mongoose.connection.close();

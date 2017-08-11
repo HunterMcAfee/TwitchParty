@@ -1,14 +1,13 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-const streamerSchema = Schema({
+const streamerSchema = mongoose.Schema({
     userName: String,
     profileImage: String,
     bio: String,
     linkToStream: String,
 });
 
-const partySchema = Schema({
+const partySchema = mongoose.Schema({
     partyName: String,
     bannerImage: String,
     description: String,
@@ -16,7 +15,7 @@ const partySchema = Schema({
     streamers: [streamerSchema]
 });
 
-const userSchema = Schema({
+const userSchema = mongoose.Schema({
     userName: String,
     firstName: String,
     lastName: String,
@@ -27,7 +26,7 @@ const userSchema = Schema({
 
 const streamerModel = mongoose.model('Streamer', streamerSchema);
 const partyModel = mongoose.model('Party', partySchema);
-const userModel = mongoose.model('Streamer', userSchema);
+const userModel = mongoose.model('User', userSchema);
 
 module.exports = {
     streamerModel, partyModel, userModel
