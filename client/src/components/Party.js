@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+
+const IndividualPartyStyle = styled.div`
+    img {
+        height: 500px;
+        width: 800px;
+    }
+`;
+
 class Party extends Component {
     constructor() {
         super();
@@ -30,7 +39,21 @@ class Party extends Component {
     render() {
         return (
             <div>
-                Party
+            <IndividualPartyStyle>
+                <h1>Party Name: {this.state.partyName}</h1>
+                <img src={this.state.bannerImage}></img>
+                <div>Description: {this.state.description}</div>
+                <br />
+                <div>Games Played: {this.state.games.map( (game, i) => {
+                    return(
+                        <div key={i}>{game}</div>
+                    )})}</div>
+                <br />
+                <div>Streamers: {this.state.streamers.map( (streamer, i) => {
+                    return(
+                        <div key={i}>{streamer.userName}</div>
+                    )})}</div>
+            </IndividualPartyStyle>
             </div>
         );
     }
