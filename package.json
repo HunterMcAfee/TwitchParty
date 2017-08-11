@@ -6,13 +6,13 @@
   "author": "HunterMcAfee <huntmac10@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": "8.1.2"
+    "node": "8.2.1"
   },
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"nodemon server.js\" \"cd client && yarn start\"",
-    "postinstall": "cd client && npm install && npm run build"
+    "postinstall": "cd client && yarn && yarn build"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
