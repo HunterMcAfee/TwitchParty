@@ -2,7 +2,7 @@ require ('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
+const PartyController = require('./controllers/party');
 const app = express();
 
 mongoose.Promise = global.Promise;
@@ -18,11 +18,14 @@ connection.on('error', (err) => {
 })
 
 app.use(express.static(__dirname + '/client/build/'));
-
 app.use(bodyParser.json());
+
+app.use('/api/party', PartyController);
 app.get('/', (req,res) => {
     res.sendFile(__dirname + '/client/build/index.html')
   })
+
+
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
