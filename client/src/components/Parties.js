@@ -20,8 +20,8 @@ class Parties extends Component {
     componentWillMount() {
         axios.get("/api/party").then( (res) => {
             this.setState({ parties: res.data });
-        }).catch( (err) => {
-            console.log(err);
+        }).catch( (error) => {
+            console.log(error);
         })
     }
 
