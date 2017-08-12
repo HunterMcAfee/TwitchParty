@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
+
 const StreamersForm = props => {
     return(
         <div>
@@ -97,6 +99,8 @@ class CreateParty extends Component {
                 })}  
                 <button>Create Party</button>           
                 </form>
+                <br />
+                <Link to='/'>Go back</Link>
             </div>
         );
     }

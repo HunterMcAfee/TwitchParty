@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
 import axios from 'axios';
+import { Link } from "react-router-dom"
 
 const PartyStyle = styled.div`
     img {
@@ -31,11 +32,13 @@ class Parties extends Component {
             <div>
                 <h1>Parties</h1>
                 <div>
+                <Link to='/createParty'>Create a Party</Link>
                 {this.state.parties.map( (party, i) => {
                     return (
                         <PartyStyle key={i}>
                         {party.partyName}
                         <img src={party.bannerImage} alt='' />
+                        <a href={`/party/${party._id}`}>Go to</a>
                         </PartyStyle>
                     )
                 })}

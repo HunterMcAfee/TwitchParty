@@ -52,6 +52,7 @@ class Party extends Component {
             return (
                 <div>
                     <IndividualPartyStyle>
+                        <Link to={`/edit/${this.state.id}`}>Edit</Link>
                         <h1>Party Name: {this.state.partyName}</h1>
                         <img src={this.state.bannerImage} alt=''></img>
                         <div>Description: {this.state.description}</div>
@@ -67,7 +68,10 @@ class Party extends Component {
                                 <div key={i}>{streamer.userName}</div>
                             )
                         })}</div>
+                        <br />
                         <button onClick={(e) => this._handleDelete(e, this.state.id)}>Delete</button>
+                        <br /><br />
+                        <Link to={`/`}>Go back</Link>
                     </IndividualPartyStyle>
                 </div>
             );
