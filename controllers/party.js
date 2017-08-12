@@ -23,7 +23,6 @@ router.get('/:partyId', (req, res) => {
 
 router.post('/', (req, res) => {
     const newParty = new Party();
-    console.log(req.body)
     newParty.partyName = req.body.partyName
     newParty.bannerImage = req.body.bannerImage
     newParty.description = req.body.description
@@ -40,6 +39,15 @@ router.post('/', (req, res) => {
         console.log(err);
     })
 })
+
+router.put('/', (req, res) => {
+    Party.findByIdAndUpdate(req.body._id, req.body).then( (party) => {
+            console.log('Saved edits');
+        })
+        .catch( (err) => {
+            console.log(err);
+        })
+});
 
 router.get('/delete/:partyId', (req, res) => {
     Party.findByIdAndRemove(req.params.partyId).then( (party) => {
