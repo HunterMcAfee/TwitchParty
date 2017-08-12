@@ -25,6 +25,7 @@ class Parties extends Component {
         })
     }
 
+
     render() {
         return (
             <div>

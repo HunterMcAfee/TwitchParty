@@ -41,5 +41,13 @@ router.post('/', (req, res) => {
     })
 })
 
+router.get('/delete/:partyId', (req, res) => {
+    Party.findByIdAndRemove(req.params.partyId).then( (party) => {
+            console.log(`${party.partyName} was deleted`)
+        })
+        .catch( (err) => {
+            console.log(err);
+        })
+});
 
 module.exports = router;
