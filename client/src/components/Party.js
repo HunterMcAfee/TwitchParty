@@ -41,7 +41,7 @@ class Party extends Component {
             <div>
             <IndividualPartyStyle>
                 <h1>Party Name: {this.state.partyName}</h1>
-                <img src={this.state.bannerImage}></img>
+                <img src={this.state.bannerImage} alt=''></img>
                 <div>Description: {this.state.description}</div>
                 <br />
                 <div>Games Played: {this.state.games.map( (game, i) => {

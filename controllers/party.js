@@ -21,4 +21,25 @@ router.get('/:partyId', (req, res) => {
     })
 });
 
+router.post('/', (req, res) => {
+    const newParty = new Party();
+    console.log(req.body)
+    newParty.partyName = req.body.partyName
+    newParty.bannerImage = req.body.bannerImage
+    newParty.description = req.body.description
+
+    const newStreamers = req.body.streamers.map( (streamer) => {
+        return new Streamer(streamer);
+    })
+
+    newParty.streamers = newStreamers;
+
+    newParty.save().then( (party) => {
+        res.json(party);
+    }).catch( (err) => {
+        console.log(err);
+    })
+})
+
+
 module.exports = router;

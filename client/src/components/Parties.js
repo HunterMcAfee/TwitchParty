@@ -34,7 +34,7 @@ class Parties extends Component {
                     return (
                         <PartyStyle key={i}>
                         {party.partyName}
-                        <img src={party.bannerImage} />
+                        <img src={party.bannerImage} alt='' />
                         </PartyStyle>
                     )
                 })}
