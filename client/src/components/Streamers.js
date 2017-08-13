@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { Link, Redirect } from "react-router-dom"
+import Streamer from './Streamer'
 
-
-class Party extends Component {
+class Streamers extends Component {
     constructor() {
         super();
         this.state = {
-            redirect: false,
             id: '',
             partyName: '',
             bannerImage: '',
@@ -35,11 +34,19 @@ class Party extends Component {
     render() {
             return (
                 <div>
-                    Hello
+                    <h1>{this.state.partyName}</h1>
+                    {this.state.streamers.map( (streamer) => {
+                        return (
+                            <Streamer userName={streamer.userName}
+                                profileImage={streamer.profileImage}
+                                bio={streamer.bio}
+                                linkToStream={streamer.linkToStream} />
+                        )
+                    })}
                 </div>
             );
         }
     }
 
 
-export default Party;
+export default Streamers;
