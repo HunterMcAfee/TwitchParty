@@ -100,7 +100,7 @@ class CreateParty extends Component {
                 <button>Create Party</button>           
                 </form>
                 <br />
-                <Link to='/'>Go back</Link>
+                <Link to='/parties'>Go back</Link>
             </div>
         );
     }

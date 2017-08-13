@@ -73,7 +73,7 @@ class Party extends Component {
                         <br /><br />
                         <Link to={`/streamers/${this.state.id}`}>WATCH</Link>
                         <br /><br />
-                        <Link to={`/`}>Go back</Link>
+                        <Link to={`/parties`}>Go back</Link>
                     </IndividualPartyStyle>
                 </div>
             );

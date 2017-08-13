@@ -3,7 +3,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const PartyController = require('./controllers/party');
-const StreamerController = require('./controllers/streamer')
+const StreamerController = require('./controllers/streamer');
+const UserController = require('./controllers/user');
+
 const app = express();
 
 mongoose.Promise = global.Promise;
@@ -23,6 +25,8 @@ app.use(bodyParser.json());
 
 app.use('/api/party', PartyController);
 app.use('/api/streamer', StreamerController);
+app.use('/api/user', UserController);
+
 
 app.get('/', (req,res) => {
     console.log("Hello")

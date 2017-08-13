@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-import { Link, Redirect } from "react-router-dom"
 
 class Streamer extends Component {
     render() {

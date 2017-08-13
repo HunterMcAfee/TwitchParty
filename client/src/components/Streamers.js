@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
-import { Link, Redirect } from "react-router-dom"
+import { Link } from "react-router-dom"
 import Streamer from './Streamer'
 
 class Streamers extends Component {
@@ -35,9 +34,9 @@ class Streamers extends Component {
             return (
                 <div>
                     <h1>{this.state.partyName}</h1>
-                    {this.state.streamers.map( (streamer) => {
+                    {this.state.streamers.map( (streamer, i) => {
                         return (
-                            <Streamer userName={streamer.userName}
+                            <Streamer key={i} userName={streamer.userName}
                                 profileImage={streamer.profileImage}
                                 bio={streamer.bio}
                                 linkToStream={streamer.linkToStream} />
