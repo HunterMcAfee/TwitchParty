@@ -43,6 +43,7 @@ class Streamers extends Component {
                                 linkToStream={streamer.linkToStream} />
                         )
                     })}
+                    <Link to={`/party/${this.state.id}`}>Go back</Link>
                 </div>
             );
         }

@@ -10,6 +10,7 @@ class App extends Component {
     return (
       <Router>
         <div>
+        <Link to='/'>HOME</Link>
         <Route exact path='/' component={Parties} />
         <Route exact path='/party/:partyId' component={Party} />
         <Route exact path='/createParty' component={CreateParty} />

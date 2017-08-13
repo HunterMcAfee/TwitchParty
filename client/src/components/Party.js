@@ -71,6 +71,8 @@ class Party extends Component {
                         <br />
                         <button onClick={(e) => this._handleDelete(e, this.state.id)}>Delete</button>
                         <br /><br />
+                        <Link to={`/streamers/${this.state.id}`}>WATCH</Link>
+                        <br /><br />
                         <Link to={`/`}>Go back</Link>
                     </IndividualPartyStyle>
                 </div>
