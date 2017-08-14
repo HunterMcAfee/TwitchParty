@@ -14,6 +14,7 @@ class App extends Component {
       <Router>
         <div>
         <Link to='/'>HOME</Link>
+        <br /><br />
         <Route exact path='/' component={Homepage} />
         <Route exact path='/parties' component={Parties} />
         <Route exact path='/party/:partyId' component={Party} />
