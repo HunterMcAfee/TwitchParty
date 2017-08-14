@@ -12,14 +12,14 @@ router.get('/', (req, res) => {
     })
 });
 
-// router.get('/:partyId', (req, res) => {
-//     Party.findById(req.params.partyId).then( (party) => {
-//         res.json(party);
-//     })
-//     .catch( (err) => {
-//         console.log(err);
-//     })
-// });
+router.get('/:userId', (req, res) => {
+    User.findById(req.params.userId).then( (user) => {
+        res.json(user);
+    })
+    .catch( (err) => {
+        console.log(err);
+    })
+});
 
 // router.post('/', (req, res) => {
 //     const newParty = new Party();
