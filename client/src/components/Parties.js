@@ -14,7 +14,7 @@ class Parties extends Component {
     constructor() {
         super();
         this.state = {
-            user: null,
+            user: '',
             userLogged: false,
             parties: []
         }
@@ -47,16 +47,20 @@ class Parties extends Component {
             <div>
                 <h1>Parties</h1>
                 <div>
-                <Link to='/createParty'>Create a Party</Link>
+                 {this.state.userLogged ? <Link to={`/${this.state.user._id}/createParty`}>Create a Party</Link> :
+                    <Link to='/createParty'>Create a Party</Link>}  
                 {this.state.parties.map( (party, i) => {
                     return (
                         <PartyStyle key={i}>
                         {party.partyName}
                         <img src={party.bannerImage} alt='' />
-                        <a href={`/party/${party._id}`}>Go to</a>
+                        {this.state.userLogged ? <a href={`/${this.state.user._id}/party/${party._id}`}>Go to</a> : 
+                            <a href={`/party/${party._id}`}>Go to</a>}
                         </PartyStyle>
                     )
                 })}
+                <br />
+                {this.state.userLogged ? <Link to={`/user/${this.state.user._id}`}>Go back to profile</Link> : null}
                 </div>
             </div>
         );

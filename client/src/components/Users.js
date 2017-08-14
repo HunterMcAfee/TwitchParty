@@ -28,7 +28,7 @@ class Users extends Component {
                     return (
                         <div key={i}>
                         {user.userName}
-                        <a href={`/user/${user._id}`}>Go to</a>
+                        <a href={`/user/${user._id}`}>Log in</a>
                         </div>
                     )
                 })}

@@ -14,6 +14,8 @@ class Party extends Component {
     constructor() {
         super();
         this.state = {
+            user: '',
+            userLogged: false,
             redirect: false,
             id: '',
             partyName: '',
@@ -36,6 +38,19 @@ class Party extends Component {
                 streamers: res.data.streamers
             })
         })
+        // Get user
+        if (this.props.match.params.userId) {
+            this.setState({
+                userLogged: true,
+            })
+            axios.get(`/api/user/${this.props.match.params.userId}`)
+                .then( (res) => {
+                    this.setState({user: res.data});
+                })
+                .catch( (err) => {
+                    console.log(err);
+                })
+        }
     }
 
     _handleDelete = (e, partyId) => {
@@ -47,12 +62,17 @@ class Party extends Component {
 
     render() {
         if (this.state.redirect) {
-            return <Redirect to={'/'} />;
+            if (this.state.userLogged){
+                return <Redirect to={`/${this.state.user._id}/parties`} />;
+            } else {
+                return <Redirect to={`/parties`} />
+            }
         } else {
             return (
                 <div>
                     <IndividualPartyStyle>
-                        <Link to={`/edit/${this.state.id}`}>Edit</Link>
+                        {this.state.userLogged ? <Link to={`/${this.state.user._id}/edit/${this.state.id}`}>Edit</Link> :
+                            <Link to={`/edit/${this.state.id}`}>Edit</Link>}
 
                         <h1>Party Name: {this.state.partyName}</h1>
                         <img src={this.state.bannerImage} alt=''></img>
@@ -80,11 +100,13 @@ class Party extends Component {
 
                         <br /><br />
 
-                        <Link to={`/streamers/${this.state.id}`}>WATCH</Link>
+                        {this.state.userLogged ? <Link to={`/${this.state.user._id}/streamers/${this.state.id}`}>WATCH</Link> :
+                            <Link to={`/streamers/${this.state.id}`}>WATCH</Link>}
 
                         <br /><br />
                         
-                        <Link to={`/parties`}>Go back</Link>
+                        {this.state.userLogged ? <Link to={`/${this.state.user._id}/parties`}>Go back</Link> :
+                            <Link to={`/parties`}>Go back</Link>}
                     </IndividualPartyStyle>
                 </div>
             );

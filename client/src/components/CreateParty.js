@@ -38,6 +38,8 @@ class CreateParty extends Component {
     constructor() {
         super();
         this.state = {
+            user: '',
+            userLogged: false,
             redirect: false,
             party: {
                 partyName: '',
@@ -74,6 +76,22 @@ class CreateParty extends Component {
         }
     }
 
+    componentWillMount() {
+        // Get user
+        if (this.props.match.params.userId) {
+            this.setState({
+                userLogged: true,
+            })
+            axios.get(`/api/user/${this.props.match.params.userId}`)
+                .then( (res) => {
+                    this.setState({user: res.data});
+                })
+                .catch( (err) => {
+                    console.log(err);
+                })
+        }
+    }
+
     _createParty = (e) => {
         e.preventDefault();
         axios.post('/api/party', this.state.party)
@@ -107,7 +125,11 @@ class CreateParty extends Component {
 
     render() {
         if (this.state.redirect) {
-            return <Redirect to={`/parties`} />;
+            if (this.state.userLogged) { 
+                return <Redirect to={`/${this.state.user._id}/parties`} /> 
+            } else {
+                 return <Redirect to={`/parties`} />
+            }
         } else {
             return (
                 <div>
@@ -142,7 +164,8 @@ class CreateParty extends Component {
                         <button>Create Party</button>
                     </form>
                     <br />
-                    <Link to='/parties'>Go back</Link>
+                    {this.state.userLogged ? <Link to={`/${this.state.user._id}/parties`}>Go back</Link> :
+                        <Link to='/parties'>Go back</Link>}
                 </div>
             );
         }

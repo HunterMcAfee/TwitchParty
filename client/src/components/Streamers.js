@@ -7,6 +7,8 @@ class Streamers extends Component {
     constructor() {
         super();
         this.state = {
+            user: '',
+            userLogged: false,
             id: '',
             partyName: '',
             bannerImage: '',
@@ -28,6 +30,19 @@ class Streamers extends Component {
                 streamers: res.data.streamers
             })
         })
+        // Get user
+        if (this.props.match.params.userId) {
+            this.setState({
+                userLogged: true,
+            })
+            axios.get(`/api/user/${this.props.match.params.userId}`)
+                .then( (res) => {
+                    this.setState({user: res.data});
+                })
+                .catch( (err) => {
+                    console.log(err);
+                })
+        }
     }
 
     render() {
@@ -42,7 +57,8 @@ class Streamers extends Component {
                                 linkToStream={streamer.linkToStream} />
                         )
                     })}
-                    <Link to={`/party/${this.state.id}`}>Go back</Link>
+                    {this.state.userLogged ? <Link to={`/${this.state.user._id}/party/${this.state.id}`}>Go back</Link> :
+                        <Link to={`/party/${this.state.id}`}>Go back</Link>}
                 </div>
             );
         }

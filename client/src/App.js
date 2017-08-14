@@ -32,6 +32,10 @@ class App extends Component {
 
           {/* Routing User Is Logged In */}
           <Route exact path='/:userId/parties' component={Parties} />
+          <Route exact path='/:userId/party/:partyId' component={Party} />
+          <Route exact path='/:userId/createParty' component={CreateParty} />
+          <Route exact path='/:userId/edit/:partyId' component={EditParty} />
+          <Route exact path='/:userId/streamers/:partyId' component={Streamers} />
         </div>
       </Router>
     );

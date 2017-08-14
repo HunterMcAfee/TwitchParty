@@ -5,27 +5,27 @@ import { Link, Redirect } from "react-router-dom"
 const StreamersForm = props => {
     return (
         <div>
-            <input onChange={e => props._handleStreamerChange(e, props.index)} 
-                index={props.index}    
-                value={props.streamer.userName} 
-                name='userName' type='text' 
+            <input onChange={e => props._handleStreamerChange(e, props.index)}
+                index={props.index}
+                value={props.streamer.userName}
+                name='userName' type='text'
                 placeholder='User Name' />
-            <input onChange={e => props._handleStreamerChange(e, props.index)} 
-                index={props.index} 
-                value={props.streamer.profileImage} 
-                name='profileImage' 
-                type='text' 
+            <input onChange={e => props._handleStreamerChange(e, props.index)}
+                index={props.index}
+                value={props.streamer.profileImage}
+                name='profileImage'
+                type='text'
                 placeholder='Profile Image' />
-            <input onChange={e => props._handleStreamerChange(e, props.index)} 
-                index={props.index} 
-                value={props.streamer.bio} 
-                name='bio' type='text' 
+            <input onChange={e => props._handleStreamerChange(e, props.index)}
+                index={props.index}
+                value={props.streamer.bio}
+                name='bio' type='text'
                 placeholder='Bio' />
-            <input onChange={e => props._handleStreamerChange(e, props.index)} 
-                index={props.index} 
-                value={props.streamer.linkToStream} 
-                name='linkToStream' 
-                type='text' 
+            <input onChange={e => props._handleStreamerChange(e, props.index)}
+                index={props.index}
+                value={props.streamer.linkToStream}
+                name='linkToStream'
+                type='text'
                 placeholder='Link To Stream' />
             <br />
             <br />
@@ -36,6 +36,8 @@ class EditParty extends Component {
     constructor() {
         super();
         this.state = {
+            user: '',
+            userLogged: false,
             redirect: false,
             party: {
                 _id: '',
@@ -66,6 +68,19 @@ class EditParty extends Component {
             .catch((err) => {
                 console.log(err);
             })
+        // Get user
+        if (this.props.match.params.userId) {
+            this.setState({
+                userLogged: true,
+            })
+            axios.get(`/api/user/${this.props.match.params.userId}`)
+                .then((res) => {
+                    this.setState({ user: res.data });
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        }
     }
 
     _editParty = (e) => {
@@ -77,7 +92,7 @@ class EditParty extends Component {
             .catch((err) => {
                 console.log(err);
             })
-        this.setState({redirect: true})
+        this.setState({ redirect: true })
     }
 
     _handlePartyChange = (event) => {
@@ -100,41 +115,46 @@ class EditParty extends Component {
 
     render() {
         if (this.state.redirect) {
-            return <Redirect to={`/party/${this.state.party._id}`} />;
+            if (this.state.userLogged) {
+                return <Redirect to={`/${this.state.user._id}/party/${this.state.party._id}`} />
+            } else {
+                return <Redirect to={`/party/${this.state.party._id}`} />
+            }
         } else {
             return (
                 <div>
                     <h1>Edit Party</h1>
                     <form onSubmit={this._editParty}>
-                        <input onChange={this._handlePartyChange} 
-                            type='text' 
-                            name='partyName' 
-                            value={this.state.party.partyName} 
+                        <input onChange={this._handlePartyChange}
+                            type='text'
+                            name='partyName'
+                            value={this.state.party.partyName}
                             placeholder='Party Name' />
                         <br />
-                        <input onChange={this._handlePartyChange} 
-                            type='text' 
-                            name='bannerImage' 
-                            value={this.state.party.bannerImage} 
+                        <input onChange={this._handlePartyChange}
+                            type='text'
+                            name='bannerImage'
+                            value={this.state.party.bannerImage}
                             placeholder='Banner Image' />
                         <br />
-                        <input onChange={this._handlePartyChange} 
-                            type='text' 
-                            name='description' 
-                            value={this.state.party.description} 
+                        <input onChange={this._handlePartyChange}
+                            type='text'
+                            name='description'
+                            value={this.state.party.description}
                             placeholder='Description' />
                         <br />
                         <br />
                         {this.state.party.streamers.map((streamer, i) => {
                             return (
-                                <StreamersForm _handleStreamerChange={this._handleStreamerChange} 
-                                    key={i} 
-                                    index={i} 
+                                <StreamersForm _handleStreamerChange={this._handleStreamerChange}
+                                    key={i}
+                                    index={i}
                                     streamer={streamer} />)
                         })}
                         <button>Submit Changes</button>
                         <br /><br />
-                        <Link to={`/party/${this.state.party._id}`}>Go back</Link>
+                        {this.state.userLogged ? <Link to={`/${this.state.user._id}/party/${this.state.party._id}`}>Go back</Link> :
+                            <Link to={`/party/${this.state.party._id}`}>Go back</Link>}
                     </form>
                 </div>
             );
