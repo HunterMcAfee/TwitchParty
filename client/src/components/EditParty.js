@@ -127,8 +127,7 @@ class EditParty extends Component {
                         <br />
                         {this.state.party.streamers.map((streamer, i) => {
                             return (
-                                <StreamersForm 
-                                    _handleStreamerChange={this._handleStreamerChange} 
+                                <StreamersForm _handleStreamerChange={this._handleStreamerChange} 
                                     key={i} 
                                     index={i} 
                                     streamer={streamer} />)
