@@ -60,6 +60,30 @@ class Party extends Component {
         this.setState({ redirect: true })
     }
 
+    _addToFavorites = (e) => {
+        e.preventDefault();
+        const favoriteParty = {
+            _id: this.state.id,
+            partyName: this.state.partyName,
+            bannerImage: this.state.bannerImage,
+            description: this.state.description,
+            games: this.state.games,
+            streamers: this.state.streamers
+        }
+        const userId = this.state.user._id;
+        const payload = {
+            favoriteParty: favoriteParty,
+            userId: userId
+        }
+        axios.post('/api/user/favoriteParty', payload)
+            .then( (res) => {
+                console.log('Sent favorite party info');
+            })
+            .catch( (err) => {
+                console.log(err);
+            })
+    }
+
     render() {
         if (this.state.redirect) {
             if (this.state.userLogged){
@@ -77,34 +101,26 @@ class Party extends Component {
                         <h1>Party Name: {this.state.partyName}</h1>
                         <img src={this.state.bannerImage} alt=''></img>
                         <div>Description: {this.state.description}</div>
-
                         <br />
-
                         <div>Games Played: {this.state.games.map((game, i) => {
                             return (
                                 <div key={i}>{game}</div>
                             )
                         })}</div>
-
                         <br />
-
                         <div>Streamers: {this.state.streamers.map((streamer, i) => {
                             return (
                                 <div key={i}>{streamer.userName}</div>
                             )
                         })}</div>
-
                         <br />
-
                         <button onClick={(e) => this._handleDelete(e, this.state.id)}>Delete</button>
-
                         <br /><br />
-
                         {this.state.userLogged ? <Link to={`/${this.state.user._id}/streamers/${this.state.id}`}>WATCH</Link> :
                             <Link to={`/streamers/${this.state.id}`}>WATCH</Link>}
-
                         <br /><br />
-                        
+                        {this.state.userLogged ? <button onClick={(e) => this._addToFavorites(e)}>Add to Favorites</button> : null}
+                        <br /><br />
                         {this.state.userLogged ? <Link to={`/${this.state.user._id}/parties`}>Go back</Link> :
                             <Link to={`/parties`}>Go back</Link>}
                     </IndividualPartyStyle>

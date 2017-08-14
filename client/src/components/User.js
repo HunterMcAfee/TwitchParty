@@ -58,8 +58,13 @@ class User extends Component {
                     <div>Email: {this.state.user.email}</div>
                     <div>Bio: {this.state.user.bio}</div>
                     <div>Saved Parties:
+                        <br />
                     {this.state.user.savedParties.map( (party) => {
-                        return party.partyName
+                        return (
+                            <div>
+                            <Link to={`/${this.state.user.id}/party/${party._id}`}>{party.partyName}</Link>
+                            </div>
+                        )
                     })}
                     </div>
                     <br />

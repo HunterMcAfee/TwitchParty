@@ -46,6 +46,20 @@ router.put('/', (req, res) => {
         })
 });
 
+router.post('/favoriteParty', (req, res) => {
+    User.findById(req.body.userId).then( (user) => {
+            user.savedParties.push(req.body.favoriteParty)
+            user.save().then( (res) => {
+                console.log('Successfully add party');
+            }).catch( (err) => {
+                console.log(err);
+            })
+        })
+        .catch( (err) => {
+            console.log(err);
+        })
+});
+
 router.get('/delete/:userId', (req, res) => {
     User.findByIdAndRemove(req.params.userId).then( (user) => {
             console.log(`${user.userName} was deleted`)
