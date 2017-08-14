@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TwitchEmbed from './TwitchEmbed';
 
 class Streamer extends Component {
     render() {
@@ -7,6 +8,7 @@ class Streamer extends Component {
                     <h3>{this.props.userName}</h3>
                     <img src={this.props.profileImage} alt='' />
                     <div>{this.props.bio}</div>
+                    <TwitchEmbed channel={this.props.userName} />
                     <a href={this.props.linkToStream} target='_blank'>Stream</a>
                     <br />
                     <br />

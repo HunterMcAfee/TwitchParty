@@ -5995,6 +5995,10 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
 
+twitch-embed@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/twitch-embed/-/twitch-embed-1.1.4.tgz#c213f27927edf073fa9fff5818f652f3c799277c"
+
 type-check@~0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/type-check/-/type-check-0.3.2.tgz#5884cab512cf1d355e3fb784f30804b2b520db72"
