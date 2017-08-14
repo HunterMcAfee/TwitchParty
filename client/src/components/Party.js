@@ -53,26 +53,37 @@ class Party extends Component {
                 <div>
                     <IndividualPartyStyle>
                         <Link to={`/edit/${this.state.id}`}>Edit</Link>
+
                         <h1>Party Name: {this.state.partyName}</h1>
                         <img src={this.state.bannerImage} alt=''></img>
                         <div>Description: {this.state.description}</div>
+
                         <br />
+
                         <div>Games Played: {this.state.games.map((game, i) => {
                             return (
                                 <div key={i}>{game}</div>
                             )
                         })}</div>
+
                         <br />
+
                         <div>Streamers: {this.state.streamers.map((streamer, i) => {
                             return (
                                 <div key={i}>{streamer.userName}</div>
                             )
                         })}</div>
+
                         <br />
+
                         <button onClick={(e) => this._handleDelete(e, this.state.id)}>Delete</button>
+
                         <br /><br />
+
                         <Link to={`/streamers/${this.state.id}`}>WATCH</Link>
+
                         <br /><br />
+                        
                         <Link to={`/parties`}>Go back</Link>
                     </IndividualPartyStyle>
                 </div>
