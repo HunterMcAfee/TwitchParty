@@ -37,14 +37,14 @@ router.post('/', (req, res) => {
     })
 })
 
-// router.put('/', (req, res) => {
-//     Party.findByIdAndUpdate(req.body._id, req.body).then( (party) => {
-//             console.log('Saved edits');
-//         })
-//         .catch( (err) => {
-//             console.log(err);
-//         })
-// });
+router.put('/', (req, res) => {
+    User.findByIdAndUpdate(req.body._id, req.body).then( (user) => {
+            console.log('Saved edits');
+        })
+        .catch( (err) => {
+            console.log(err);
+        })
+});
 
 router.get('/delete/:userId', (req, res) => {
     User.findByIdAndRemove(req.params.userId).then( (user) => {
