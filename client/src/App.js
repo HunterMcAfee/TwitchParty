@@ -18,6 +18,7 @@ class App extends Component {
         <div>
           <Link to='/'>HOME</Link>
           <br /><br />
+          {/* Routing User Not Logged In */}
           <Route exact path='/' component={Homepage} />
           <Route exact path='/parties' component={Parties} />
           <Route exact path='/party/:partyId' component={Party} />
@@ -28,6 +29,9 @@ class App extends Component {
           <Route exact path='/user/:userId' component={User} />
           <Route exact path='/createUser'component={CreateUser} />
           <Route exact path='/user/edit/:userId' component={EditUser} />
+
+          {/* Routing User Is Logged In */}
+          <Route exact path='/:userId/parties' component={Parties} />
         </div>
       </Router>
     );

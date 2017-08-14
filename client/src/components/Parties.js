@@ -14,6 +14,8 @@ class Parties extends Component {
     constructor() {
         super();
         this.state = {
+            user: null,
+            userLogged: false,
             parties: []
         }
     }
@@ -24,8 +26,21 @@ class Parties extends Component {
         }).catch( (error) => {
             console.log(error);
         })
-    }
 
+        // Get user
+        if (this.props.match.params.userId) {
+            this.setState({
+                userLogged: true,
+            })
+            axios.get(`/api/user/${this.props.match.params.userId}`)
+                .then( (res) => {
+                    this.setState({user: res.data});
+                })
+                .catch( (err) => {
+                    console.log(err);
+                })
+        }
+    }
 
     render() {
         return (

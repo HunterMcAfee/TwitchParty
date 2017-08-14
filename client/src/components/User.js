@@ -63,6 +63,8 @@ class User extends Component {
                     })}
                     </div>
                     <br />
+                    <Link to={`/${this.state.user.id}/parties`}>Continue to parties</Link>
+                    <br /><br />
                     <button onClick={(e) => this._handleDelete(e, this.state.user.id)}>Delete</button>
                     <br /><br />
                     <Link to={`/users`}>Go back</Link>
