@@ -49,13 +49,13 @@ router.get('/:userId', (req, res) => {
 //         })
 // });
 
-// router.get('/delete/:partyId', (req, res) => {
-//     Party.findByIdAndRemove(req.params.partyId).then( (party) => {
-//             console.log(`${party.partyName} was deleted`)
-//         })
-//         .catch( (err) => {
-//             console.log(err);
-//         })
-// });
+router.get('/delete/:userId', (req, res) => {
+    User.findByIdAndRemove(req.params.userId).then( (user) => {
+            console.log(`${user.userName} was deleted`)
+        })
+        .catch( (err) => {
+            console.log(err);
+        })
+});
 
 module.exports = router;

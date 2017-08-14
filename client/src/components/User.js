@@ -37,17 +37,18 @@ class User extends Component {
         })
     }
 
-    // _handleDelete = (e, partyId) => {
-    //     axios.get(`/api/party/delete/${partyId}`)
-    //         .then(() => console.log('Deleted'))
-    //         .catch((err) => console.log(err));
-    //     this.setState({ redirect: true })
-    // }
+    _handleDelete = (e, userId) => {
+        e.preventDefault();
+        axios.get(`/api/user/delete/${userId}`)
+            .then(() => console.log('User Deleted'))
+            .catch((err) => console.log(err));
+        this.setState({ redirect: true })
+    }
 
     render() {
-        // if (this.state.redirect) {
-        //     return <Redirect to={'/'} />;
-        // } else {
+        if (this.state.redirect) {
+            return <Redirect to={'/users'} />;
+        } else {
             return (
                 <div>
                     <div>{this.state.user.userName}</div>
@@ -60,10 +61,11 @@ class User extends Component {
                         return party.partyName
                     })}
                     </div>
+                    <button onClick={(e) => this._handleDelete(e, this.state.user.id)}>Delete</button>
                 </div>
             );
         }
     }
-
+}
 
 export default User;
