@@ -76,7 +76,7 @@ class CreateUser extends Component {
                         placeholder='Bio' />
                     <br />
                     <br />
-                    <button>Create Party</button>           
+                    <button>Create User</button>           
                 </form>
                 <br />
                 <Link to='/users'>Go back</Link>
