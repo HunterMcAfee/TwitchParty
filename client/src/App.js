@@ -8,6 +8,7 @@ import Streamers from './components/Streamers';
 import Users from './components/Users';
 import Homepage from './components/Homepage';
 import User from './components/User';
+import CreateUser from './components/CreateUser';
 
 class App extends Component {
   render() {
@@ -24,6 +25,7 @@ class App extends Component {
           <Route exact path='/streamers/:partyId' component={Streamers} />
           <Route exact path='/users' component={Users} />
           <Route exact path='/user/:userId' component={User} />
+          <Route exact path='/createUser'component={CreateUser} />
         </div>
       </Router>
     );

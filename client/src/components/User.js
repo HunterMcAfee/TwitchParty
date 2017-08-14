@@ -51,11 +51,11 @@ class User extends Component {
         } else {
             return (
                 <div>
-                    <div>{this.state.user.userName}</div>
-                    <div>{this.state.user.firstName}</div>
-                    <div>{this.state.user.lastName}</div>
-                    <div>{this.state.user.email}</div>
-                    <div>{this.state.user.bio}</div>
+                    <div>User Name: {this.state.user.userName}</div>
+                    <div>First Name: {this.state.user.firstName}</div>
+                    <div>Last Name: {this.state.user.lastName}</div>
+                    <div>Email: {this.state.user.email}</div>
+                    <div>Bio: {this.state.user.bio}</div>
                     <div>Saved Parties:
                     {this.state.user.savedParties.map( (party) => {
                         return party.partyName

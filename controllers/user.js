@@ -21,24 +21,21 @@ router.get('/:userId', (req, res) => {
     })
 });
 
-// router.post('/', (req, res) => {
-//     const newParty = new Party();
-//     newParty.partyName = req.body.partyName
-//     newParty.bannerImage = req.body.bannerImage
-//     newParty.description = req.body.description
+router.post('/', (req, res) => {
+    const newUser = new User();
+    newUser.userName = req.body.userName
+    newUser.firstName = req.body.firstName
+    newUser.lastName = req.body.lastName
+    newUser.email = req.body.email
+    newUser.bio = req.body.bio
+    newUser.savedParties = req.body.savedParties
 
-//     const newStreamers = req.body.streamers.map( (streamer) => {
-//         return new Streamer(streamer);
-//     })
-
-//     newParty.streamers = newStreamers;
-
-//     newParty.save().then( (party) => {
-//         res.json(party);
-//     }).catch( (err) => {
-//         console.log(err);
-//     })
-// })
+    newUser.save().then( (user) => {
+        res.json(user);
+    }).catch( (err) => {
+        console.log(err);
+    })
+})
 
 // router.put('/', (req, res) => {
 //     Party.findByIdAndUpdate(req.body._id, req.body).then( (party) => {
