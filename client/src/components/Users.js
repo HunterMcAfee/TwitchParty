@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 class Users extends Component {
     constructor() {
@@ -21,6 +22,8 @@ class Users extends Component {
     render() {
         return (
             <div>
+                <Link to={`/createUser`}>Create a User</Link>
+                <br /><br />
                 {this.state.users.map( (user, i) => {
                     return (
                         <div key={i}>

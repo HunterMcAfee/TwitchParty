@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 class EditUser extends Component {
     constructor() {
@@ -42,64 +42,69 @@ class EditUser extends Component {
     _editUser = (e) => {
         e.preventDefault();
         axios.put('/api/user', this.state.user)
-            .then( (res) => {
+            .then((res) => {
                 console.log('Sucessfully sent edited user information');
             })
-            .catch ( (err) => {
+            .catch((err) => {
                 console.log(err);
             })
+        this.setState({ redirect: true });
     }
 
     _handleUserChange = (event) => {
         const attributeName = event.target.name;
         const attibuteValue = event.target.value;
 
-        const updateUser = {...this.state}
+        const updateUser = { ...this.state }
         updateUser.user[attributeName] = attibuteValue;
         this.setState(updateUser);
     }
 
 
     render() {
-        return (
-            <div>
-                <h1>Edit User</h1>
-                <form onSubmit={this._editUser}>
-                    <input onChange={this._handleUserChange} 
-                        type='text' name='userName' 
-                        value={this.state.user.userName} 
-                        placeholder='User Name' />
+        if (this.state.redirect) {
+            return <Redirect to={`/user/${this.state.user._id}`} />;
+        } else {
+            return (
+                <div>
+                    <h1>Edit User</h1>
+                    <form onSubmit={this._editUser}>
+                        <input onChange={this._handleUserChange}
+                            type='text' name='userName'
+                            value={this.state.user.userName}
+                            placeholder='User Name' />
+                        <br />
+                        <input onChange={this._handleUserChange}
+                            type='text' name='firstName'
+                            value={this.state.user.firstName}
+                            placeholder='First Name' />
+                        <br />
+                        <input onChange={this._handleUserChange}
+                            type='text'
+                            name='lastName'
+                            value={this.state.user.lastName}
+                            placeholder='Last Name' />
+                        <br />
+                        <input onChange={this._handleUserChange}
+                            type='text'
+                            name='email'
+                            value={this.state.user.email}
+                            placeholder='Email' />
+                        <br />
+                        <input onChange={this._handleUserChange}
+                            type='text'
+                            name='bio'
+                            value={this.state.user.bio}
+                            placeholder='Bio' />
+                        <br />
+                        <br />
+                        <button>Submit Changes</button>
+                    </form>
                     <br />
-                    <input onChange={this._handleUserChange} 
-                        type='text' name='firstName' 
-                        value={this.state.user.firstName} 
-                        placeholder='First Name' />
-                    <br />
-                    <input onChange={this._handleUserChange} 
-                        type='text' 
-                        name ='lastName' 
-                        value={this.state.user.lastName} 
-                        placeholder='Last Name' />
-                    <br />
-                    <input onChange={this._handleUserChange} 
-                        type='text' 
-                        name ='email' 
-                        value={this.state.user.email} 
-                        placeholder='Email' />
-                    <br />
-                    <input onChange={this._handleUserChange} 
-                        type='text' 
-                        name ='bio' 
-                        value={this.state.user.bio} 
-                        placeholder='Bio' />
-                    <br />
-                    <br />
-                    <button>Submit Changes</button>           
-                </form>
-                <br />
-                <Link to={`/user/${this.state.user._id}`}>Go back</Link>
-            </div>
-        );
+                    <Link to={`/user/${this.state.user._id}`}>Go back</Link>
+                </div>
+            );
+        }
     }
 }
 

@@ -51,6 +51,7 @@ class User extends Component {
         } else {
             return (
                 <div>
+                    <Link to={`/user/edit/${this.state.user.id}`}>Edit</Link>
                     <div>User Name: {this.state.user.userName}</div>
                     <div>First Name: {this.state.user.firstName}</div>
                     <div>Last Name: {this.state.user.lastName}</div>

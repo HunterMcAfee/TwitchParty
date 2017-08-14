@@ -8,6 +8,8 @@ class Homepage extends Component {
                 <div>
                 <h1>Welcome to TwitchParty</h1>
                 <Link to='/parties/'>Parties</Link>
+                <br />
+                <Link to='/users'>Login as user</Link>
                 </div>
             </div>
         );
