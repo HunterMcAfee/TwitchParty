@@ -35,7 +35,7 @@ class App extends Component {
           <Route exact path='/users' component={Users} />
           <Route exact path='/user/:userId' component={User} />
           <Route exact path='/createUser'component={CreateUser} />
-          <Route exact path='/user/edit/:userId' component={EditUser} />
+          <Route exact path='/editUser/:userId' component={EditUser} />
 
           {/* Routing User Is Logged In */}
           <Route exact path='/:userId/parties' component={Parties} />
