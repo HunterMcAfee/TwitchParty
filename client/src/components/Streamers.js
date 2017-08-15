@@ -2,6 +2,22 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom"
 import Streamer from './Streamer'
+import styled from 'styled-components';
+
+const StreamersStyle = styled.div`
+    display: flex;
+    justify-content: center;
+    align-content: space-around;
+    flex-wrap: wrap;
+    padding-bottom: 40px;
+`;
+
+const PartyName = styled.h2`
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    font-family: Helvetica;
+`
 
 class Streamers extends Component {
     constructor() {
@@ -48,7 +64,10 @@ class Streamers extends Component {
     render() {
             return (
                 <div>
-                    <h1>{this.state.partyName}</h1>
+                    {this.state.userLogged ? <Link to={`/${this.state.user._id}/party/${this.state.id}`}>Go back</Link> :
+                        <Link to={`/party/${this.state.id}`}>Go back</Link>}
+                    <PartyName>{this.state.partyName}</PartyName>
+                    <StreamersStyle>
                     {this.state.streamers.map( (streamer, i) => {
                         return (
                             <Streamer key={i} userName={streamer.userName}
@@ -57,8 +76,7 @@ class Streamers extends Component {
                                 linkToStream={streamer.linkToStream} />
                         )
                     })}
-                    {this.state.userLogged ? <Link to={`/${this.state.user._id}/party/${this.state.id}`}>Go back</Link> :
-                        <Link to={`/party/${this.state.id}`}>Go back</Link>}
+                    </StreamersStyle>
                 </div>
             );
         }

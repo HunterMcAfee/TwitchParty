@@ -10,14 +10,21 @@ import Homepage from './components/Homepage';
 import User from './components/User';
 import CreateUser from './components/CreateUser';
 import EditUser from './components/EditUser';
+import styled from 'styled-components';
+import NavBar from './components/NavBar';
+const navBar = styled.div`
+  background-color: #391d63;
+  width: 100%;
+  height: 25px;
+  font-color: white;
+`;
 
 class App extends Component {
   render() {
     return (
       <Router>
         <div>
-          <Link to='/'>HOME</Link>
-          <br /><br />
+          <NavBar />
           {/* Routing User Not Logged In */}
           <Route exact path='/' component={Homepage} />
           <Route exact path='/parties' component={Parties} />
