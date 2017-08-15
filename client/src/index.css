@@ -1,5 +1,40 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  background-color: #f2f2f2;
+}
+
+.brand-logo {
+  margin-left: 10px;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.homeLink {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.topNav {
+  box-shadow: none;
+  background-color: #33174f;
+}
+
+ .normalButton {
+  background-color: #33174f;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}  
+
+.normalButton:active {
+  background-color: black;
+}
+
+.bitFont {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.alignCenter {
+  display: flex;
+  justify-content: center;
 }
