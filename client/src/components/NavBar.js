@@ -2,19 +2,26 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Redirect, Link } from 'react-router-dom';
 
+const NavBarStyle = styled.div`
+    background-color: #30113b;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    a {
+        color: white;
+        font-family: 'Press Start 2P';
+        text-decoration: none;
+        font-size: 30px;
+        margin-left: 10px;
+    }
+`;
 class NavBar extends Component {
     render() {
         return (
-            <div className="navbar-fixed">
-                <nav className='topNav'>
-                    <div className="nav-wrapper">
-                        <a href="/" className="brand-logo">TwitchParty</a>
-                        <ul className="right">
-                            <li><a href="/" className='homeLink'>Home</a></li>                        
-                        </ul>
-                    </div>
-                </nav>
-            </div>
+            <NavBarStyle>
+                <a href="/">TwitchParty</a>
+            </NavBarStyle>
         );
     }
 }
