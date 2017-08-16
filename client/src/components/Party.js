@@ -6,15 +6,17 @@ import { Link, Redirect } from "react-router-dom"
 const PartyWrapper = styled.div`
     display: flex;
     justify-content: center;
-    align-content: space-around;
+    align-items: space-around;
     flex-wrap: wrap;
     h1 {
         font-family: 'Press Start 2P', cursive;
+        font-size: 50px;
+        margin-top: 20px;
+        margin-bottom: 0px;
     }
     img {
         height: 500px;
         width: 800px;
-        border-radius: 10px;
     }
 `;
 
@@ -26,31 +28,20 @@ const PartyContainer = styled.div`
     margin-bottom: 20px;
 `;
 
-const PartyStyle = styled.div`
+const Information = styled.div`
+    font-weight: bold;
+    font-size: 14;
+    background-color: #1a1a1a;
+    color: white;
+    padding: 10px;
+`;
+
+const EditDelete = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 100px;
-    width: 600px;
-    padding-right: 10px;
-    background-color: white;
-    border-radius: 10px;
-    border: 3px solid black;
-    img {
-        height: 100px;
-        width: 300px;
-        border-radius: 10px;
-        border: 3px solid #1a1a1a;
-    }
-`;
-
-const PartyName = styled.div`
-    color: black;
-    height: 100px;
-    width: 75px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
 `;
 
 class Party extends Component {
@@ -139,12 +130,7 @@ class Party extends Component {
                 <div>
                     <PartyWrapper>
                         <PartyContainer>
-                        {this.state.userLogged ? <Link to={`/${this.state.user._id}/edit/${this.state.id}`}><button className="normalButton">Edit</button></Link> :
-                            <Link to={`/edit/${this.state.id}`}><button className="normalButton">Edit</button></Link>}
-                        </PartyContainer>
-
-                        <PartyContainer>
-                        <h1>Party Name: {this.state.partyName}</h1>
+                        <h1>{this.state.partyName}</h1>
                         </PartyContainer>
 
                         <PartyContainer>
@@ -152,41 +138,41 @@ class Party extends Component {
                         </PartyContainer>
 
                         <PartyContainer>
-                        <div>Description: {this.state.description}</div>
-                        </PartyContainer>
-
-                        <PartyContainer>
-                        <div>Games Played: {this.state.games.map((game, i) => {
+                        <Information>{this.state.description}</Information>
+                        {/* <div>Games Played: {this.state.games.map((game, i) => {
                             return (
                                 <div key={i}>{game}</div>
                             )
-                        })}</div>
+                        })}</div> */}
                         </PartyContainer>
                         
                         <PartyContainer>
-                        <div>Streamers: {this.state.streamers.map((streamer, i) => {
+                        <Information>STREAMERS: {this.state.streamers.map((streamer, i) => {
                             return (
                                 <div key={i}>{streamer.userName}</div>
                             )
-                        })}</div>
+                        })}</Information>
+                        </PartyContainer>
+
+                        <EditDelete>
+                        {this.state.userLogged ? <Link to={`/${this.state.user._id}/edit/${this.state.id}`}><button className="normalButton">EDIT PARTY</button></Link> :
+                            <Link to={`/edit/${this.state.id}`}><button className="normalButton">EDIT PARTY</button></Link>}
+                        
+                        <button className='normalButton' onClick={(e) => this._handleDelete(e, this.state.id)}>DELETE PARTY</button>
+                        </EditDelete>
+
+                        <PartyContainer>
+                        {this.state.userLogged ? <Link to={`/${this.state.user._id}/streamers/${this.state.id}`}><button className='watchButton'>WATCH</button></Link> :
+                            <Link to={`/streamers/${this.state.id}`}><button className='watchButton'>WATCH</button></Link>}
                         </PartyContainer>
 
                         <PartyContainer>
-                        <button onClick={(e) => this._handleDelete(e, this.state.id)}>Delete</button>
+                        {this.state.userLogged ? <button className='normalButton' onClick={(e) => this._addToFavorites(e)}>ADD TO FAVORITES</button> : null}
                         </PartyContainer>
-
+                        
                         <PartyContainer>
-                        {this.state.userLogged ? <Link to={`/${this.state.user._id}/streamers/${this.state.id}`}>WATCH</Link> :
-                            <Link to={`/streamers/${this.state.id}`}>WATCH</Link>}
-                        </PartyContainer>
-
-                        <PartyContainer>
-                        {this.state.userLogged ? <button onClick={(e) => this._addToFavorites(e)}>Add to Favorites</button> : null}
-                        </PartyContainer>
-
-                        <PartyContainer>
-                        {this.state.userLogged ? <Link to={`/${this.state.user._id}/parties`}>Go back</Link> :
-                            <Link to={`/parties`}>Go back</Link>}
+                        {this.state.userLogged ? <Link to={`/${this.state.user._id}/parties`}><button className="normalButton">GO BACK</button></Link> :
+                            <Link to={`/parties`}><button className="normalButton">GO BACK</button></Link>}
                         </PartyContainer>
                     </PartyWrapper>
                 </div>

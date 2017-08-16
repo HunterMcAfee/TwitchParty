@@ -7,17 +7,22 @@ import styled from 'styled-components';
 const StreamersStyle = styled.div`
     display: flex;
     justify-content: center;
-    align-content: space-around;
     flex-wrap: wrap;
     padding-bottom: 40px;
 `;
 
-const PartyName = styled.h2`
-    margin-bottom: 10px;
+const buttonStyle = styled.div`
     display: flex;
     justify-content: center;
-    font-family: Helvetica;
-`
+    align-items: center;
+`;
+
+const PartyName = styled.h1`
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Press Start 2P', cursive;
+`;
 
 class Streamers extends Component {
     constructor() {
@@ -63,9 +68,11 @@ class Streamers extends Component {
 
     render() {
             return (
-                <div>
-                    {this.state.userLogged ? <Link to={`/${this.state.user._id}/party/${this.state.id}`}>Go back</Link> :
-                        <Link to={`/party/${this.state.id}`}>Go back</Link>}
+                <buttonStyle>
+                    
+                    {this.state.userLogged ? <Link to={`/${this.state.user._id}/party/${this.state.id}`}><button className='normalButton'>GO BACK</button></Link> :
+                        <Link to={`/party/${this.state.id}`}><button className='normalButton'>GO BACK</button></Link>}
+                  
                     <PartyName>{this.state.partyName}</PartyName>
                     <StreamersStyle>
                     {this.state.streamers.map( (streamer, i) => {
@@ -77,7 +84,7 @@ class Streamers extends Component {
                         )
                     })}
                     </StreamersStyle>
-                </div>
+                </buttonStyle>
             );
         }
     }

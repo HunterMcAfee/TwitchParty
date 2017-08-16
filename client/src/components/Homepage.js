@@ -10,6 +10,7 @@ const HomePageStyling = styled.div`
     padding-bottom: 40px;
     h1 {
         font-family: 'Press Start 2P', cursive;
+        font-size: 50px;
     }
 `;
 
@@ -18,6 +19,7 @@ const HomePageContainer = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
+    padding-bottom: 20px;
 `;
 
 class Homepage extends Component {

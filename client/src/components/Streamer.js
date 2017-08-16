@@ -6,9 +6,9 @@ const StreamerStyle = styled.div`
     background-color: #1a1a1a;
     color: white;
     width: 500px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 20px;
     font-size: 80%;
     font-family: Helvetica;
     img {

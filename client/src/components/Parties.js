@@ -10,6 +10,7 @@ const PartyWrapper = styled.div`
     flex-wrap: wrap;
     h1 {
         font-family: 'Press Start 2P', cursive;
+        font-size: 50px;
     }
 `;
 
@@ -27,20 +28,21 @@ const PartyStyle = styled.div`
     justify-content: space-around;
     height: 100px;
     width: 600px;
+    padding-left: 20px;
     padding-right: 10px;
-    background-color: white;
+    background-color: #1a1a1a;
     border-radius: 10px;
-    border: 3px solid black;
+    border: 5px solid #1a1a1a;
     img {
         height: 100px;
         width: 300px;
         border-radius: 10px;
-        border: 3px solid #1a1a1a;
+        border: 2px solid #1a1a1a;
     }
 `;
 
 const PartyName = styled.div`
-    color: black;
+    color: white;
     height: 100px;
     width: 75px;
     display: flex;
@@ -97,8 +99,8 @@ class Parties extends Component {
                         <PartyStyle key={i}>
                         <PartyName>{party.partyName}</PartyName>
                         <img src={party.bannerImage} alt='' />
-                        {this.state.userLogged ? <a href={`/${this.state.user._id}/party/${party._id}`}><button className='normalButton'>GO TO</button></a> : 
-                            <a href={`/party/${party._id}`}><button className='normalButton'>GO TO</button></a>}
+                        {this.state.userLogged ? <a href={`/${this.state.user._id}/party/${party._id}`}><button className='partyButton'>GO TO</button></a> : 
+                            <a href={`/party/${party._id}`}><button className='partyButton'>GO TO</button></a>}
                         </PartyStyle>
                         </PartyContainer>
                     )
