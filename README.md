@@ -2,17 +2,19 @@
 
 Heroku Link: https://twitch-party.herokuapp.com/
 
-ERD: http://i.imgur.com/ymF4yoB.jpg
+ERD: http://i.imgur.com/OBU2BcY.jpg
 
 ##Application Wireframe 
 
-<a href="http://imgur.com/BbaSE4N"><img src="http://i.imgur.com/BbaSE4N.jpg" title="source: imgur.com" /></a>
-
-<a href="http://imgur.com/g95m1WV"><img src="http://i.imgur.com/g95m1WV.jpg" title="source: imgur.com" /></a>
+<a href="http://imgur.com/Knaeuna"><img src="http://i.imgur.com/Knaeuna.jpg" title="source: imgur.com" /></a>
 
 
+<a href="http://imgur.com/Qwx3AX7"><img src="http://i.imgur.com/Qwx3AX7.jpg" title="source: imgur.com" /></a>
 
-<a href="http://imgur.com/vtpkCNJ"><img src="http://i.imgur.com/vtpkCNJ.jpg" title="source: imgur.com" /></a>
+
+
+
+<a href="http://imgur.com/4Ug7Yd6"><img src="http://i.imgur.com/4Ug7Yd6.jpg" title="source: imgur.com" /></a>
 
 
 ## App Overview
