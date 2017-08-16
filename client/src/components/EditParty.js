@@ -1,6 +1,29 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link, Redirect } from "react-router-dom"
+import styled from 'styled-components';
+
+const PartyWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-content: space-around;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    font-size: 18px;
+    
+`;
+
+const PartyContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 20px;
+    h1 {
+        font-family: 'Press Start 2P', cursive;
+        margin-bottom: 0px;
+    }
+`;
 
 const StreamersForm = props => {
     return (
@@ -122,27 +145,32 @@ class EditParty extends Component {
             }
         } else {
             return (
-                <div>
+                <PartyWrapper>
+                    <PartyContainer>
                     <h1>Edit Party</h1>
+                    </PartyContainer>
                     <form onSubmit={this._editParty}>
+                        <PartyContainer>
                         <input onChange={this._handlePartyChange}
                             type='text'
                             name='partyName'
                             value={this.state.party.partyName}
                             placeholder='Party Name' />
-                        <br />
+                        </PartyContainer>
+                        <PartyContainer>
                         <input onChange={this._handlePartyChange}
                             type='text'
                             name='bannerImage'
                             value={this.state.party.bannerImage}
                             placeholder='Banner Image' />
-                        <br />
+                        </PartyContainer>      
+                        <PartyContainer>                  
                         <input onChange={this._handlePartyChange}
                             type='text'
                             name='description'
                             value={this.state.party.description}
                             placeholder='Description' />
-                        <br />
+                        </PartyContainer>
                         <br />
                         {this.state.party.streamers.map((streamer, i) => {
                             return (
@@ -151,12 +179,15 @@ class EditParty extends Component {
                                     index={i}
                                     streamer={streamer} />)
                         })}
-                        <button>Submit Changes</button>
-                        <br /><br />
-                        {this.state.userLogged ? <Link to={`/${this.state.user._id}/party/${this.state.party._id}`}>Go back</Link> :
-                            <Link to={`/party/${this.state.party._id}`}>Go back</Link>}
+                        <PartyContainer>
+                        <button className='normalButton'>SUBMIT CHANGES</button>
+                        </PartyContainer>
                     </form>
-                </div>
+                    <PartyContainer>
+                    {this.state.userLogged ? <Link to={`/${this.state.user._id}/party/${this.state.party._id}`}><button className='normalButton'>GO BACK</button></Link> :
+                            <Link to={`/party/${this.state.party._id}`}><button className='normalButton'>GO BACK</button></Link>}
+                    </PartyContainer>
+                </PartyWrapper>
             );
         }
     }
