@@ -3,11 +3,49 @@ import styled from 'styled-components'
 import axios from 'axios';
 import { Link } from "react-router-dom"
 
-const PartyStyle = styled.div`
-    img {
-        height: 200px;
-        width: 500px;
+const PartyWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-content: space-around;
+    flex-wrap: wrap;
+    h1 {
+        font-family: 'Press Start 2P', cursive;
     }
+`;
+
+const PartyContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+`;
+
+const PartyStyle = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100px;
+    width: 600px;
+    padding-right: 10px;
+    background-color: white;
+    border-radius: 10px;
+    border: 3px solid black;
+    img {
+        height: 100px;
+        width: 300px;
+        border-radius: 10px;
+        border: 3px solid #1a1a1a;
+    }
+`;
+
+const PartyName = styled.div`
+    color: black;
+    height: 100px;
+    width: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
 class Parties extends Component {
@@ -44,25 +82,33 @@ class Parties extends Component {
 
     render() {
         return (
-            <div>
+            <PartyWrapper>
+                <PartyContainer>
                 <h1>Parties</h1>
-                <div>
-                 {this.state.userLogged ? <Link to={`/${this.state.user._id}/createParty`}>Create a Party</Link> :
-                    <Link to='/createParty'>Create a Party</Link>}  
+                </PartyContainer>
+                <PartyContainer>
+                {this.state.userLogged ? <Link to={`/${this.state.user._id}/createParty`}><button className='normalButton'>CREATE A PARTY</button></Link> :
+                    <Link to='/createParty'><button className='normalButton'>CREATE A PARTY</button></Link>} 
+                </PartyContainer> 
+                
                 {this.state.parties.map( (party, i) => {
                     return (
+                        <PartyContainer>
                         <PartyStyle key={i}>
-                        {party.partyName}
+                        <PartyName>{party.partyName}</PartyName>
                         <img src={party.bannerImage} alt='' />
-                        {this.state.userLogged ? <a href={`/${this.state.user._id}/party/${party._id}`}>Go to</a> : 
-                            <a href={`/party/${party._id}`}>Go to</a>}
+                        {this.state.userLogged ? <a href={`/${this.state.user._id}/party/${party._id}`}><button className='normalButton'>GO TO</button></a> : 
+                            <a href={`/party/${party._id}`}><button className='normalButton'>GO TO</button></a>}
                         </PartyStyle>
+                        </PartyContainer>
                     )
                 })}
                 <br />
-                {this.state.userLogged ? <Link to={`/user/${this.state.user._id}`}>Go back to profile</Link> : null}
-                </div>
-            </div>
+    
+                <PartyContainer>
+                {this.state.userLogged ? <Link to={`/user/${this.state.user._id}`}><button className='normalButton'>GO BACK TO PROFILE</button></Link> : null}
+                </PartyContainer>
+            </PartyWrapper>
         );
     }
 }

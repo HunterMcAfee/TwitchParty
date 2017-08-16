@@ -3,11 +3,54 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { Link, Redirect } from "react-router-dom"
 
-const IndividualPartyStyle = styled.div`
+const PartyWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-content: space-around;
+    flex-wrap: wrap;
+    h1 {
+        font-family: 'Press Start 2P', cursive;
+    }
     img {
         height: 500px;
         width: 800px;
+        border-radius: 10px;
     }
+`;
+
+const PartyContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+`;
+
+const PartyStyle = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100px;
+    width: 600px;
+    padding-right: 10px;
+    background-color: white;
+    border-radius: 10px;
+    border: 3px solid black;
+    img {
+        height: 100px;
+        width: 300px;
+        border-radius: 10px;
+        border: 3px solid #1a1a1a;
+    }
+`;
+
+const PartyName = styled.div`
+    color: black;
+    height: 100px;
+    width: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
 class Party extends Component {
@@ -94,36 +137,58 @@ class Party extends Component {
         } else {
             return (
                 <div>
-                    <IndividualPartyStyle>
-                        {this.state.userLogged ? <Link to={`/${this.state.user._id}/edit/${this.state.id}`}>Edit</Link> :
-                            <Link to={`/edit/${this.state.id}`}>Edit</Link>}
+                    <PartyWrapper>
+                        <PartyContainer>
+                        {this.state.userLogged ? <Link to={`/${this.state.user._id}/edit/${this.state.id}`}><button className="normalButton">Edit</button></Link> :
+                            <Link to={`/edit/${this.state.id}`}><button className="normalButton">Edit</button></Link>}
+                        </PartyContainer>
 
+                        <PartyContainer>
                         <h1>Party Name: {this.state.partyName}</h1>
+                        </PartyContainer>
+
+                        <PartyContainer>
                         <img src={this.state.bannerImage} alt=''></img>
+                        </PartyContainer>
+
+                        <PartyContainer>
                         <div>Description: {this.state.description}</div>
-                        <br />
+                        </PartyContainer>
+
+                        <PartyContainer>
                         <div>Games Played: {this.state.games.map((game, i) => {
                             return (
                                 <div key={i}>{game}</div>
                             )
                         })}</div>
-                        <br />
+                        </PartyContainer>
+                        
+                        <PartyContainer>
                         <div>Streamers: {this.state.streamers.map((streamer, i) => {
                             return (
                                 <div key={i}>{streamer.userName}</div>
                             )
                         })}</div>
-                        <br />
+                        </PartyContainer>
+
+                        <PartyContainer>
                         <button onClick={(e) => this._handleDelete(e, this.state.id)}>Delete</button>
-                        <br /><br />
+                        </PartyContainer>
+
+                        <PartyContainer>
                         {this.state.userLogged ? <Link to={`/${this.state.user._id}/streamers/${this.state.id}`}>WATCH</Link> :
                             <Link to={`/streamers/${this.state.id}`}>WATCH</Link>}
-                        <br /><br />
+                        </PartyContainer>
+
+                        <PartyContainer>
                         {this.state.userLogged ? <button onClick={(e) => this._addToFavorites(e)}>Add to Favorites</button> : null}
-                        <br /><br />
+                        </PartyContainer>
+
+                        <PartyContainer>
                         {this.state.userLogged ? <Link to={`/${this.state.user._id}/parties`}>Go back</Link> :
                             <Link to={`/parties`}>Go back</Link>}
-                    </IndividualPartyStyle>
+                        </PartyContainer>
+                    </PartyWrapper>
                 </div>
             );
         }
