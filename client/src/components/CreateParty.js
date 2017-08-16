@@ -162,11 +162,11 @@ class CreateParty extends Component {
                                     index={i}
                                     streamer={streamer} />)
                         })}
-                        <button>Create Party</button>
+                        <button className='normalButton'>CREATE PARTY</button>
                     </form>
                     <br />
-                    {this.state.userLogged ? <Link to={`/${this.state.user._id}/parties`}>Go back</Link> :
-                        <Link to='/parties'>Go back</Link>}
+                    {this.state.userLogged ? <Link to={`/${this.state.user._id}/parties`}><button className='normalButton'>GO BACK</button></Link> :
+                        <Link to='/parties'><button className='normalButton'>GO BACK</button></Link>}
                 </div>
             );
         }

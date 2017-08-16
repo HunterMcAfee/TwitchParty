@@ -95,7 +95,7 @@ class Parties extends Component {
                 
                 {this.state.parties.map( (party, i) => {
                     return (
-                        <PartyContainer>
+                        <PartyContainer key={i}>
                         <PartyStyle key={i}>
                         <PartyName>{party.partyName}</PartyName>
                         <img src={party.bannerImage} alt='' />
