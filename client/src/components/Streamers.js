@@ -9,6 +9,8 @@ const StreamersStyle = styled.div`
     justify-content: center;
     flex-wrap: wrap;
     padding-bottom: 40px;
+    width: 75vw;
+    margin: auto;
 `;
 
 const buttonStyle = styled.div`
