@@ -10,7 +10,13 @@ const PartyWrapper = styled.div`
     flex-wrap: wrap;
     padding-top: 20px;
     font-size: 18px;
-    
+    input {
+        padding: 7px;
+        margin: 2px;
+        border: 3px solid #30113b;
+        font-weight: bold;
+        font-size: 70%;
+    }
 `;
 
 const PartyContainer = styled.div`
@@ -22,6 +28,11 @@ const PartyContainer = styled.div`
     h1 {
         font-family: 'Press Start 2P', cursive;
         margin-bottom: 0px;
+    }
+    input {
+        padding: 7px;
+        margin: 2px;
+        border: 3px solid #30113b;
     }
 `;
 

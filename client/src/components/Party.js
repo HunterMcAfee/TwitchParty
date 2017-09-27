@@ -116,6 +116,7 @@ class Party extends Component {
             .catch( (err) => {
                 console.log(err);
             })
+        alert(`${this.state.partyName} party was added to your favorites list!`);
     }
 
     render() {

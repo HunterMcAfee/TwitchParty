@@ -23,6 +23,11 @@ const PartyContainer = styled.div`
         font-family: 'Press Start 2P', cursive;
         margin-bottom: 0px;
     }
+    input {
+        padding: 7px;
+        margin: 2px;
+        border: 3px solid #30113b;
+    }
 `;
 
 const StreamersForm = props => {
