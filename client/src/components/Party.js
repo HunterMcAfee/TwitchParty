@@ -38,7 +38,7 @@ const Information = styled.div`
 
 const EditDelete = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     width: 100%;
     margin-bottom: 20px;
 `;
@@ -155,10 +155,10 @@ class Party extends Component {
                         </PartyContainer>
 
                         <EditDelete>
-                        {this.state.userLogged ? <Link to={`/${this.state.user._id}/edit/${this.state.id}`}><button className="normalButton" style={{marginLeft: "100px", marginRight: "100px"}}>EDIT PARTY</button></Link> :
+                        {this.state.userLogged ? <Link to={`/${this.state.user._id}/edit/${this.state.id}`}><button className="normalButton">EDIT PARTY</button></Link> :
                             <Link to={`/edit/${this.state.id}`}><button className="normalButton">EDIT PARTY</button></Link>}
                         
-                        <button className='normalButton' onClick={(e) => this._handleDelete(e, this.state.id)} style={{marginLeft: "100px", marginRight: "100px"}}>DELETE PARTY</button>
+                        <button className='normalButton' onClick={(e) => this._handleDelete(e, this.state.id)}>DELETE PARTY</button>
                         </EditDelete>
 
                         <PartyContainer>
