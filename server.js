@@ -27,10 +27,10 @@ app.use('/api/party', PartyController);
 app.use('/api/streamer', StreamerController);
 app.use('/api/user', UserController);
 
-// app.get('/', (req,res) => {
-//     console.log("Hello")
-//     res.sendFile(__dirname + '/client/build/')
-//   })
+app.get('/', (req,res) => {
+    console.log("Hello")
+    res.sendFile(__dirname + '/client/build/index.html')
+  })
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
