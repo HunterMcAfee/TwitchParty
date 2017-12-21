@@ -17,35 +17,30 @@ const PartyWrapper = styled.div`
 
 const PartyContainer = styled.div`
     display: flex;
-    align-items: center;
     justify-content: center;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 `;
 
 const PartyStyle = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    height: 100px;
-    width: 600px;
-    padding-left: 20px;
-    padding-right: 10px;
+    justify-content: space-between;
+    height: 150px;
+    width: 700px;
+    padding-right: 30px;
     background-color: #1a1a1a;
-    border-radius: 10px;
-    border: 5px solid #1a1a1a;
     img {
-        height: 100px;
-        width: 300px;
-        border-radius: 10px;
-        border: 2px solid #1a1a1a;
+        height: 150px;
+        width: 400px;
     }
 `;
 
 const PartyName = styled.div`
     color: white;
-    height: 100px;
-    width: 75px;
+    height: 150px;
+    width: 125px;
+    font-size: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,8 +93,8 @@ class Parties extends Component {
                     return (
                         <PartyContainer key={i}>
                         <PartyStyle key={i}>
-                        <PartyName>{party.partyName}</PartyName>
                         <img src={party.bannerImage} alt='' />
+                        <PartyName>{party.partyName}</PartyName>
                         {this.state.userLogged ? <a href={`/${this.state.user._id}/party/${party._id}`}><button className='partyButton'>GO TO</button></a> : 
                             <a href={`/party/${party._id}`}><button className='partyButton'>GO TO</button></a>}
                         </PartyStyle>
