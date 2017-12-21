@@ -8,14 +8,20 @@ const PartyWrapper = styled.div`
     justify-content: center;
     align-items: space-around;
     flex-wrap: wrap;
+    margin-bottom: 20px;
     h1 {
         font-family: 'Press Start 2P', cursive;
         font-size: 50px;
-        margin-top: 20px;
+        padding-top: 25px;
+        padding-bottom: 25px;
         margin-bottom: 0px;
+        background-color: #1a1a1a;
+        color: white;
+        width: 800px;
+        text-align: center;
     }
     img {
-        height: 500px;
+        height: 600px;
         width: 800px;
     }
 `;
@@ -25,7 +31,6 @@ const PartyContainer = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-bottom: 20px;
 `;
 
 const Information = styled.div`
@@ -33,14 +38,14 @@ const Information = styled.div`
     font-size: 14;
     background-color: #1a1a1a;
     color: white;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 800px;
+    text-align: center;
 `;
 
-const EditDelete = styled.div`
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    margin-bottom: 20px;
+const Buttons = styled.div`
+    margin: 10px;
 `;
 
 class Party extends Component {
@@ -50,28 +55,29 @@ class Party extends Component {
             user: '',
             userLogged: false,
             redirect: false,
-            id: '',
-            partyName: '',
-            bannerImage: '',
-            description: '',
-            games: [],
-            streamers: []
+            party: {
+                streamers: []
+            }
         }
     }
 
     componentWillMount() {
+        this._fetchParty();
+        this._fetchUser();
+    }
+
+    _fetchParty = async () => {
         const id = this.props.match.params.partyId;
-        axios.get(`/api/party/${id}`).then((res) => {
-            this.setState({
-                id: res.data._id,
-                partyName: res.data.partyName,
-                bannerImage: res.data.bannerImage,
-                description: res.data.description,
-                games: res.data.games,
-                streamers: res.data.streamers
-            })
-        })
-        // Get user
+        try {
+            const res = await axios.get(`/api/party/${id}`);
+            this.setState({party: res.data})
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+    _fetchUser = () => {
         if (this.props.match.params.userId) {
             this.setState({
                 userLogged: true,
@@ -85,7 +91,6 @@ class Party extends Component {
                 })
         }
     }
-
     _handleDelete = (e, partyId) => {
         axios.get(`/api/party/delete/${partyId}`)
             .then(() => console.log('Deleted'))
@@ -95,18 +100,9 @@ class Party extends Component {
 
     _addToFavorites = (e) => {
         e.preventDefault();
-        const favoriteParty = {
-            _id: this.state.id,
-            partyName: this.state.partyName,
-            bannerImage: this.state.bannerImage,
-            description: this.state.description,
-            games: this.state.games,
-            streamers: this.state.streamers
-        }
-        const userId = this.state.user._id;
         const payload = {
-            favoriteParty: favoriteParty,
-            userId: userId
+            favoriteParty: this.state.party,
+            userId: this.state.user._id
         }
         axios.post('/api/user/favoriteParty', payload)
             .then( (res) => {
@@ -115,7 +111,7 @@ class Party extends Component {
             .catch( (err) => {
                 console.log(err);
             })
-        alert(`${this.state.partyName} party was added to your favorites list!`);
+        alert(`${this.state.party.partyName} party was added to your favorites list!`);
     }
 
     render() {
@@ -130,50 +126,47 @@ class Party extends Component {
                 <div>
                     <PartyWrapper>
                         <PartyContainer>
-                        <h1>{this.state.partyName}</h1>
+                        <h1>{this.state.party.partyName}</h1>
                         </PartyContainer>
 
                         <PartyContainer>
-                        <img src={this.state.bannerImage} alt=''></img>
+                        <img src={this.state.party.bannerImage} alt=''></img>
                         </PartyContainer>
 
                         <PartyContainer>
-                        <Information>{this.state.description}</Information>
-                        {/* <div>Games Played: {this.state.games.map((game, i) => {
-                            return (
-                                <div key={i}>{game}</div>
-                            )
-                        })}</div> */}
+                        <Information>{this.state.party.description}</Information>
                         </PartyContainer>
                         
                         <PartyContainer>
-                        <Information>STREAMERS: {this.state.streamers.map((streamer, i) => {
+                        <Information>STREAMERS: {this.state.party.streamers.map((streamer, i) => {
                             return (
                                 <div key={i}>{streamer.userName}</div>
                             )
                         })}</Information>
                         </PartyContainer>
 
-                        <EditDelete>
-                        {this.state.userLogged ? <Link to={`/${this.state.user._id}/edit/${this.state.id}`}><button className="normalButton">EDIT PARTY</button></Link> :
-                            <Link to={`/edit/${this.state.id}`}><button className="normalButton">EDIT PARTY</button></Link>}
-                        
-                        <button className='normalButton' onClick={(e) => this._handleDelete(e, this.state.id)}>DELETE PARTY</button>
-                        </EditDelete>
+                        <Buttons>
+                        {this.state.userLogged ? <Link to={`/${this.state.user._id}/edit/${this.state.party._id}`}><button className="normalButton">EDIT PARTY</button></Link> :
+                            <Link to={`/edit/${this.state.party._id}`}><button className="normalButton">EDIT PARTY</button></Link>}
+                        </Buttons>
 
-                        <PartyContainer>
-                        {this.state.userLogged ? <Link to={`/${this.state.user._id}/streamers/${this.state.id}`}><button className='watchButton'>WATCH</button></Link> :
-                            <Link to={`/streamers/${this.state.id}`}><button className='watchButton'>WATCH</button></Link>}
-                        </PartyContainer>
+                        <Buttons>
+                        <button className='normalButton' onClick={(e) => this._handleDelete(e, this.state.party._id)}>DELETE PARTY</button>
+                        </Buttons>
 
-                        <PartyContainer>
+                        <Buttons>
+                        {this.state.userLogged ? <Link to={`/${this.state.user._id}/streamers/${this.state.party._id}`}><button className='watchButton'>WATCH</button></Link> :
+                            <Link to={`/streamers/${this.state.party._id}`}><button className='watchButton'>WATCH</button></Link>}
+                        </Buttons>
+
+                        <Buttons>
                         {this.state.userLogged ? <button className='normalButton' onClick={(e) => this._addToFavorites(e)}>ADD TO FAVORITES</button> : null}
-                        </PartyContainer>
+                        </Buttons>
                         
-                        <PartyContainer>
+                        <Buttons>
                         {this.state.userLogged ? <Link to={`/${this.state.user._id}/parties`}><button className="normalButton">GO BACK</button></Link> :
                             <Link to={`/parties`}><button className="normalButton">GO BACK</button></Link>}
-                        </PartyContainer>
+                        </Buttons>
                     </PartyWrapper>
                 </div>
             );
