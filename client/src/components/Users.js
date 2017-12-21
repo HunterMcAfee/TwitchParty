@@ -21,6 +21,7 @@ const UserContainer = styled.div`
     h3 {
         font-family: 'Press Start 2P', cursive;
         padding-right: 10px;
+        color: white;
     }
 `;
 

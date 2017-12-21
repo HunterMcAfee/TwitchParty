@@ -22,6 +22,7 @@ const UserContainer = styled.div`
     h3 {
         font-family: 'Press Start 2P', cursive;
         margin-bottom: 0px;
+        color: white;
     }
 `;
 
@@ -31,9 +32,11 @@ const UserInformation = styled.div`
     justify-content: space-between;
     flex-wrap: wrap;
     width: 75%;
+    color: white;
     h3 {
         font-family: 'Press Start 2P', cursive;
         padding-right: 10px;
+        color: white;
     }
 `;
 

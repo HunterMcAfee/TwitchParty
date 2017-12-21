@@ -11,6 +11,7 @@ const PartyWrapper = styled.div`
     h1 {
         font-family: 'Press Start 2P', cursive;
         font-size: 50px;
+        color: white;
     }
 `;
 

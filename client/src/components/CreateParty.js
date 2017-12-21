@@ -22,6 +22,7 @@ const PartyContainer = styled.div`
     h1 {
         font-family: 'Press Start 2P', cursive;
         margin-bottom: 0px;
+        color: white;
     }
     input {
         padding: 7px;

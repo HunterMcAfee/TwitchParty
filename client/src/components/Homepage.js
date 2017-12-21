@@ -8,9 +8,11 @@ const HomePageStyling = styled.div`
     align-content: space-around;
     flex-wrap: wrap;
     padding-bottom: 40px;
+    margin-top: 50px;
     h1 {
         font-family: 'Press Start 2P', cursive;
         font-size: 50px;
+        color: white;
     }
 `;
 

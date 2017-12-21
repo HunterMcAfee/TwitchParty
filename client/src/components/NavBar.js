@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { BrowserRouter as Redirect, Link } from 'react-router-dom';
 
 const NavBarStyle = styled.div`
-    background-color: #30113b;
+    background-color: #3F275C;
     width: 100%;
     height: 60px;
     display: flex;

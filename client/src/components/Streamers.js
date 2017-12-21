@@ -24,6 +24,7 @@ const PartyName = styled.h1`
     display: flex;
     justify-content: center;
     font-family: 'Press Start 2P', cursive;
+    color: white;
 `;
 
 class Streamers extends Component {
