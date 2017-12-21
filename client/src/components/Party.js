@@ -35,11 +35,11 @@ const PartyContainer = styled.div`
 
 const Information = styled.div`
     font-weight: bold;
-    font-size: 14;
+    font-size: 20;
     background-color: #1a1a1a;
     color: white;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     width: 800px;
     text-align: center;
 `;
@@ -145,6 +145,7 @@ class Party extends Component {
                         })}</Information>
                         </PartyContainer>
 
+                        <PartyContainer>
                         <Buttons>
                         {this.state.userLogged ? <Link to={`/${this.state.user._id}/edit/${this.state.party._id}`}><button className="normalButton">EDIT PARTY</button></Link> :
                             <Link to={`/edit/${this.state.party._id}`}><button className="normalButton">EDIT PARTY</button></Link>}
@@ -153,15 +154,20 @@ class Party extends Component {
                         <Buttons>
                         <button className='normalButton' onClick={(e) => this._handleDelete(e, this.state.party._id)}>DELETE PARTY</button>
                         </Buttons>
+                        </PartyContainer>
 
+                        <PartyContainer>
                         <Buttons>
                         {this.state.userLogged ? <Link to={`/${this.state.user._id}/streamers/${this.state.party._id}`}><button className='watchButton'>WATCH</button></Link> :
                             <Link to={`/streamers/${this.state.party._id}`}><button className='watchButton'>WATCH</button></Link>}
                         </Buttons>
+                        </PartyContainer>
 
+                        <PartyContainer>
                         <Buttons>
                         {this.state.userLogged ? <button className='normalButton' onClick={(e) => this._addToFavorites(e)}>ADD TO FAVORITES</button> : null}
                         </Buttons>
+                        </PartyContainer>
                         
                         <Buttons>
                         {this.state.userLogged ? <Link to={`/${this.state.user._id}/parties`}><button className="normalButton">GO BACK</button></Link> :
