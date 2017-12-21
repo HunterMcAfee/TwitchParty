@@ -1,16 +1,12 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI, {useMongoClient: true});
 
 const Streamer = require('../models/streamer');
 const Party = require('../models/party');
 const User = require('../models/user');
 
 mongoose.Promise = global.Promise;
-
-Streamer.remove({}, (err) => console.log(err));
-Party.remove({}, (err) => console.log(err));
-User.remove({}, (err) => console.log(err));
 
 const streamer1 = new Streamer({
     userName: 'DrDisRespectLIVE',
@@ -111,26 +107,19 @@ const user3 = new User({
     savedParties: []
 });
 
-party1.save().then( () => {
-    console.log('Party 1 Saved!')
-}).catch( (err) => {
-    console.log(err);
-})
-
-party2.save().then( () => {
-    console.log('Party 2 Saved!')
-});
-
-user1.save().then( () => {
-    console.log('User 1 Saved!')
-});
-
-user2.save().then( () => {
-    console.log('User 2 Saved!')
-});
-
-user3.save().then( () => {
-    console.log('User 3 Saved!')
-});
-
-mongoose.connection.close();
+Party.remove({})
+    .then(() => console.log("Parties were deleted!"))
+    .then(() => party1.save())
+    .then(() => console.log("Party1 was saved!"))
+    .then(() => party2.save())
+    .then(() => console.log("Party2 was saved!"))
+    .then(() => User.remove({}))
+        .then(() => console.log("Users were deleted!"))
+        .then(() => user1.save())
+        .then(() => console.log("User1 was saved!"))
+        .then(() => user2.save())
+        .then(() => console.log("User2 was saved!"))
+        .then(() => user3.save())
+        .then(() => console.log("User3 was saved!"))
+        .then(() => console.log("Connection closing"))
+        .then(() => mongoose.connection.close())
