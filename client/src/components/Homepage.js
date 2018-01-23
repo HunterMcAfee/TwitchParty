@@ -7,21 +7,26 @@ const HomePageStyling = styled.div`
     justify-content: center;
     align-content: space-around;
     flex-wrap: wrap;
+    padding-top: 40px;
     padding-bottom: 40px;
-    margin-top: 50px;
+    background-color: #1a1a1a;
     h1 {
         font-family: 'Press Start 2P', cursive;
-        font-size: 50px;
+        font-size: 40px;
+        color: white;
+    }
+    p {
         color: white;
     }
 `;
 
 const HomePageContainer = styled.div`
     display: flex;
+    text-align: center;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    padding-bottom: 20px;
+    background-color: #1a1a1a;
+    width: 80%
 `;
 
 class Homepage extends Component {
@@ -29,20 +34,12 @@ class Homepage extends Component {
         return (
             <HomePageStyling>
                 <HomePageContainer>
-                    <h1>Welcome</h1>
+                    <h1>Welcome to TwitchParty</h1>
                 </HomePageContainer>
+            
                 <HomePageContainer>
-                    <h1>to</h1>
-                </HomePageContainer>
-                <HomePageContainer>
-                    <h1>TwitchParty</h1>
-                </HomePageContainer>
-                <HomePageContainer>
-                    <Link to='/parties/'><button className='normalButton'>GO TO PARTIES</button></Link>
-                </HomePageContainer>    
-                <br /><br /><br />
-                <HomePageContainer>
-                    <Link to='/users'><button className='normalButton'>USER LOGIN</button></Link>
+                    <Link to='/parties/'><button className='normalButton' style={{margin: "5px"}}>GO TO PARTIES</button></Link>
+                    <Link to='/users'><button className='normalButton' style={{margin: "5px"}}>USER LOGIN</button></Link>
                 </HomePageContainer>
             </HomePageStyling>
         );

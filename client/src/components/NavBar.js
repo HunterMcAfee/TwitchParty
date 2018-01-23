@@ -16,7 +16,7 @@ const NavBarStyle = styled.div`
         margin-left: 10px;
     }
     a:hover {
-        color: darkgrey;
+        color: #1a1a1a;
     }
 `;
 class NavBar extends Component {
