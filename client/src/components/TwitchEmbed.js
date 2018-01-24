@@ -1,5 +1,6 @@
 import React from 'react';
 import 'twitch-embed';
+import PropTypes from 'prop-types'
 
 export default class TwitchVideoEmbed extends React.Component {
 	constructor(props) {
@@ -11,9 +12,9 @@ export default class TwitchVideoEmbed extends React.Component {
 	}
 
 	static propTypes = {
-		channel: React.PropTypes.string,
-		video: React.PropTypes.string,
-		play: React.PropTypes.bool
+		channel: PropTypes.string,
+		video: PropTypes.string,
+		play: PropTypes.bool
 	};
 
 	componentWillMount() {
