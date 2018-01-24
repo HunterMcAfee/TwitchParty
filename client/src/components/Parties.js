@@ -6,7 +6,6 @@ import { Link } from "react-router-dom"
 const PartyWrapper = styled.div`
     display: flex;
     justify-content: center;
-    align-content: space-around;
     flex-wrap: wrap;
     h1 {
         font-family: 'Press Start 2P', cursive;
@@ -20,6 +19,13 @@ const PartyContainer = styled.div`
     justify-content: center;
     width: 100%;
     margin-bottom: 25px;
+    h1 {
+        background-color: #1a1a1a;
+        width: 100%;
+        text-align: center;
+        padding: 25px;
+        margin: 0px;
+    }
 `;
 
 const PartyStyle = styled.div`
@@ -44,6 +50,7 @@ const PartyName = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #1a1a1a;
 `;
 
 class Parties extends Component {
@@ -84,6 +91,7 @@ class Parties extends Component {
                 <PartyContainer>
                 <h1>Parties</h1>
                 </PartyContainer>
+
                 <PartyContainer>
                 {this.state.userLogged ? <Link to={`/${this.state.user._id}/createParty`}><button className='normalButton'>CREATE A PARTY</button></Link> :
                     <Link to='/createParty'><button className='normalButton'>CREATE A PARTY</button></Link>} 
