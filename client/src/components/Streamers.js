@@ -19,12 +19,18 @@ const buttonStyle = styled.div`
     align-items: center;
 `;
 
-const PartyName = styled.h1`
-    margin-bottom: 20px;
+const PartyName = styled.div`
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    width: 75vw;
+    margin: auto;
     font-family: 'Press Start 2P', cursive;
+    font-size: 2rem;
+    padding-top: 15px;
+    padding-bottom: 10px;
     color: white;
+    background-color: #3F275C;
 `;
 
 class Streamers extends Component {
@@ -74,9 +80,10 @@ class Streamers extends Component {
                 <buttonStyle>
                     
                     {this.state.userLogged ? <Link to={`/${this.state.user._id}/party/${this.state.id}`}><button className='normalButton'>GO BACK</button></Link> :
-                        <Link to={`/party/${this.state.id}`}><button className='normalButton'>GO BACK</button></Link>}
+                        <Link to={`/party/${this.state.id}`}><button className='backButton'>GO BACK</button></Link>}
                   
                     <PartyName>{this.state.partyName}</PartyName>
+
                     <StreamersStyle>
                     {this.state.streamers.map( (streamer, i) => {
                         return (

@@ -17,6 +17,30 @@ body {
   font-size: 14px;
 }
 
+.normalButton:hover {
+  background-color: white;
+  color: #3F275C;
+  cursor: pointer;
+}
+
+.backButton {
+  background-color: rgb(46, 1, 72);
+  border: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.backButton:hover {
+  background-color: white;
+  color: rgb(46, 1, 72);
+  cursor: pointer;
+}
+
 .partyButton {
   font-weight: bold;
   background-color: white;
@@ -29,6 +53,12 @@ body {
   font-size: 14px;
 }
 
+.partyButton:hover {
+  background-color: #3F275C;
+  color: white;
+  cursor: pointer;
+}
+
 .watchButton {
   font-weight: bold;
   background-color: #b10404;
@@ -39,4 +69,10 @@ body {
   border: none;
   color: white;
   font-size: 50px;
+}
+
+.watchButton:hover {
+  background-color: white;
+  color: #b10404;
+  cursor: pointer;
 }
