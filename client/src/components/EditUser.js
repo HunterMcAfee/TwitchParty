@@ -8,7 +8,6 @@ const UserWrapper = styled.div`
     justify-content: center;
     align-content: space-around;
     flex-wrap: wrap;
-    padding-top: 20px;
     font-size: 18px;
     
 `;
@@ -20,9 +19,19 @@ const UserContainer = styled.div`
     width: 100%;
     padding-bottom: 20px;
     h1 {
+        background-color: #1a1a1a;
+        width: 100%;
+        text-align: center;
+        padding: 25px;
+        margin: 0px;
         font-family: 'Press Start 2P', cursive;
-        margin-bottom: 0px;
         color: white;
+    }
+    input {
+        padding: 7px;
+        margin: 2px;
+        border: 3px solid #30113b;
+        font-size: 1rem;
     }
 `;
 
