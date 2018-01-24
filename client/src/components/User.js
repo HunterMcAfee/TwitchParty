@@ -10,7 +10,6 @@ const UserWrapper = styled.div`
     flex-wrap: wrap;
     padding-top: 20px;
     font-size: 18px;
-    
 `;
 
 const UserContainer = styled.div`
@@ -33,6 +32,8 @@ const UserInformation = styled.div`
     flex-wrap: wrap;
     width: 75%;
     color: white;
+    padding: 25px;
+    background-color: #1a1a1a;
     h3 {
         font-family: 'Press Start 2P', cursive;
         padding-right: 10px;
