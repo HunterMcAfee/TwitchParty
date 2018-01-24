@@ -61,11 +61,6 @@ class Party extends Component {
         }
     }
 
-    componentWillMount() {
-        this._fetchParty();
-        this._fetchUser();
-    }
-
     _fetchParty = async () => {
         const id = this.props.match.params.partyId;
         try {
@@ -91,6 +86,13 @@ class Party extends Component {
                 })
         }
     }
+    
+    componentWillMount() {
+        this._fetchParty();
+        this._fetchUser();
+    }
+
+    
     _handleDelete = (e, partyId) => {
         axios.get(`/api/party/delete/${partyId}`)
             .then(() => console.log('Deleted'))
