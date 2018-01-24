@@ -30,7 +30,7 @@ const PartyName = styled.div`
     padding-top: 15px;
     padding-bottom: 10px;
     color: white;
-    background-color: #3F275C;
+    /* background-color: #3F275C; */
 `;
 
 class Streamers extends Component {
